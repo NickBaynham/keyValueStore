@@ -1,4 +1,4 @@
-package main
+package keyValueStore
 
 import "errors"
 
@@ -14,10 +14,15 @@ func Put(key string, value string) error {
 	return nil
 }
 
-func Get (key string) (string, error) {
+func Get(key string) (string, error) {
 	value, ok := store[key]
 	if !ok {
 		return "", ErrorNoSuchKey
 	}
 	return value, nil
+}
+
+func Delete(key string) error {
+	delete(store, key)
+	return nil
 }
